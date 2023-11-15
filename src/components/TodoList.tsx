@@ -18,11 +18,17 @@ export const TodoList = () => {
   };
 
   // delete from the list
-  const handleDelete = (deletedItem: TodoType) => {
-    if (window.confirm("Are you sure want to delete it?")) {
-      deleteTodo(deletedItem.id);
+  const handleDelete = async (deletedItem: TodoType) => {
+    try {
+      if (window.confirm("Are you sure want to delete it?")) {
+        deleteTodo(deletedItem.id);
+      }
+
+      location.reload();
+    } catch (err) {
+      console.log(`err :: ${err}`);
+      throw err;
     }
-    location.reload();
   };
 
   return (
