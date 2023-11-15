@@ -16,7 +16,7 @@ export default function AddTodo() {
         .max(30, "Must be 30 characters or less")
         .required(),
     }),
-    onSubmit: async (values, actions) => {
+    onSubmit: async (values) => {
       try {
         const res = await addTodo(values);
       } catch (err) {
