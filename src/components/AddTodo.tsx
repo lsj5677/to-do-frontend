@@ -18,7 +18,7 @@ export default function AddTodo() {
     }),
     onSubmit: async (values) => {
       try {
-        const res = await addTodo(values);
+        return await addTodo(values);
       } catch (err) {
         console.log("error adding todo");
       }

@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  AiFillDelete,
-  AiFillEdit,
-  AiOutlineClose,
-  AiOutlinePlus,
-} from "react-icons/ai";
+import { AiFillDelete, AiOutlineClose, AiOutlinePlus } from "react-icons/ai";
 import { TodoType } from "../types/todoType";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -12,18 +7,18 @@ import { updateTodo } from "../api/todoApi";
 
 type todoItemType = {
   todoItem: TodoType;
-  onUpdate: (e: any) => void;
-  onStatusUpdate: (e: any) => void;
+  // onUpdate: (e: any) => void;
+  // onStatusUpdate: (e: any) => void;
   onDelete: (e: any) => void;
 };
 
 export const TodoItem = ({
   todoItem,
-  onUpdate,
-  onStatusUpdate,
+  // onUpdate,
+  // onStatusUpdate,
   onDelete,
 }: todoItemType) => {
-  const { id, task, status } = todoItem;
+  const { id, task } = todoItem;
   const [edit, setEdit] = useState<boolean>(false);
   const [todoUpdateTask, setTodoUpdateTask] = useState<string>(todoItem.task);
 
@@ -35,10 +30,10 @@ export const TodoItem = ({
         .max(30, "Must be 30 characters or less")
         .required(),
     }),
-    onSubmit: async (values, actions) => {
+    onSubmit: async (values) => {
       console.log(`values:: ${values}`);
       try {
-        const res = await updateTodo(values.id, values);
+        return await updateTodo(values.id, values);
       } catch (err) {
         console.log(`error updating todo`);
       }
@@ -51,20 +46,20 @@ export const TodoItem = ({
   };
 
   // update
-  const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (todoUpdateTask.trim().length === 0) {
-      window.alert("Please enter your details");
-      return;
-    }
-    onUpdate({ ...todoItem, task: todoUpdateTask });
-    setEdit(false);
-  };
+  // const handleUpdate = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   if (todoUpdateTask.trim().length === 0) {
+  //     window.alert("Please enter your details");
+  //     return;
+  //   }
+  //   onUpdate({ ...todoItem, task: todoUpdateTask });
+  //   setEdit(false);
+  // };
 
-  const handleStatusUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const status = e.target.checked ? "completed" : "active";
-    onStatusUpdate({ ...todoItem, status });
-  };
+  // const handleStatusUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const status = e.target.checked ? "completed" : "active";
+  //   onStatusUpdate({ ...todoItem, status });
+  // };
 
   // delete
   const handleDelete = () => onDelete(todoItem);
