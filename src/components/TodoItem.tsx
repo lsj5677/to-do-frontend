@@ -100,14 +100,14 @@ export const TodoItem = ({
         </form>
       ) : (
         <>
-          <input
+          {/* <input
             type="checkbox"
             name={id}
             id={id}
             checked={status === "completed"}
             onChange={handleStatusUpdate}
             className="peer/checked appearance-none w-5 h-5  border-blue-500 rounded-md bg-white mt-1 shrink-0 checked:bg-blue-800 checked:border-0"
-          />
+          /> */}
           <label
             htmlFor={id}
             className="flex-auto shrink-0 pl-2 checked:line-through peer-checked/checked:text-slate-300 peer-checked/checked:line-through"
@@ -115,12 +115,12 @@ export const TodoItem = ({
             {task}
           </label>
           <div className={`flex gap-2 ${edit ? `hidden` : `flex`} `}>
-            <button
+            {/* <button
               onClick={() => setEdit(true)}
               className="p-1 my-2 bg-gray-200"
             >
               <AiFillEdit />
-            </button>
+            </button> */}
             <button onClick={handleDelete} className="p-1 my-2 bg-gray-200">
               <AiFillDelete />
             </button>
