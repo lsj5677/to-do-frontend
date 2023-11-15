@@ -26,8 +26,6 @@ export default function AddTodo() {
       } catch (err) {
         console.log("error adding todo");
       }
-      alert("Added");
-      location.reload();
     },
   });
 
