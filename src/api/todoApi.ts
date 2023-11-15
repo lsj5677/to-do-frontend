@@ -44,8 +44,8 @@ export const updateTodo = async (id: string, todoData: TodoType) => {
 
 export const deleteTodo = async (id: string) => {
   try {
-    const res = await axios.delete(`${TODO_API_URL}/${id}`);
-    return res.data;
+    return await axios.delete(`${TODO_API_URL}/${id}`);
+    // return res.data;
   } catch (err) {
     console.log(`err :: ${err}`);
     throw err;

@@ -18,12 +18,15 @@ export default function AddTodo() {
     }),
     onSubmit: async (values) => {
       try {
-        return await addTodo(values);
+        const res = await addTodo(values);
+
+        alert("Added");
+        location.reload();
+        return res;
       } catch (err) {
         console.log("error adding todo");
       }
       alert("Added");
-      // actions.resetForm();
       location.reload();
     },
   });
